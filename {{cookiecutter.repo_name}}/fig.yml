@@ -1,0 +1,23 @@
+cache:
+  image: redis:2.8
+  ports:
+   - "6379:6379"
+
+db:
+  image: postgres:9.3
+  ports:
+   - "5432:5432"
+
+web:
+  build: .
+  command: gunicorn -c "/code/{{ cookiecutter.repo_name }}/config/gunicorn.py" --pythonpath="/code/{{ cookiecutter.repo_name }}" --reload config.wsgi:application
+  environment:
+    DJANGO_CONFIGURATION: Local
+  links:
+   - db
+   - cache
+  ports:
+   - "8000:8000"
+  volumes:
+    - .:/code
+
