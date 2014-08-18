@@ -134,6 +134,14 @@ The base app will run but you'll need to carry out a few steps to make the sign-
 
 .. _issue #39: https://github.com/pydanny/cookiecutter-django/issues/39
 
+**Static assets**
+
+::
+
+    export npm_config_prefix="$VIRTUAL_ENV"
+    npm install bower -g
+    bower install
+
 **Live reloading and Sass CSS compilation**
 
 If you'd like to take advantage of live reloading and Sass / Compass CSS compilation you can do so with the included Grunt task.

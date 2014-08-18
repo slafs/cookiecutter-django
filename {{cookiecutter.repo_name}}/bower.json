@@ -1,0 +1,12 @@
+{
+  "name": "{{ cookiecutter.repo_name }}-bower",
+  "version": "{{ cookiecutter.version }}",
+  "dependencies": {
+    "jquery": "2.1.x",
+    "bootstrap": "3.2.x",
+    "angular": "1.2.x",
+    "angular-route": "~1.2.15",
+    "angular-cookies": "~1.2.15",
+    "angular-bootstrap": "~0.11.0"
+  }
+}

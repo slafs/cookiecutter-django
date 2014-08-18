@@ -27,6 +27,7 @@ nosetests.xml
 
 # npm
 node_modules/
+bower_components/
 
 # Campass
 .sass-cache
