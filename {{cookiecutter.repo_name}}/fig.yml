@@ -10,7 +10,7 @@ db:
 
 web:
   build: .
-  command: gunicorn -c "/code/{{ cookiecutter.repo_name }}/config/gunicorn.py" --pythonpath="/code/{{ cookiecutter.repo_name }}" --reload config.wsgi:application
+  command: gunicorn -c "/code/{{ cookiecutter.repo_name }}/config/gunicorn.py" --pythonpath="/code/{{ cookiecutter.repo_name }}" --reload wsgi:application
   environment:
     DJANGO_CONFIGURATION: Local
   links:
@@ -20,4 +20,3 @@ web:
    - "8000:8000"
   volumes:
     - .:/code
-

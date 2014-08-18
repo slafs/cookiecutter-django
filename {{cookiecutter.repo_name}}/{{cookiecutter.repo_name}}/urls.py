@@ -31,7 +31,6 @@ urlpatterns = patterns('',
     url(r'^avatar/', include('avatar.urls')),
 
     # Your stuff: custom urls go here
-
 )
 
 urlpatterns += staticfiles_urlpatterns()
