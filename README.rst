@@ -36,6 +36,25 @@ Constraints
 * PostgreSQL everywhere
 * Environment variables for configuration (This won't work with Apache/mod_wsgi).
 
+What is changed in this fork
+-----------------------------
+
+* fig_ for local development using docker_
+* redis for caching
+
+What I want to change in this fork
+-----------------------------------
+
+* upgrade to Django 1.7 and eliminate South
+* Add some initial files/dirs for testing (with pytest, flake8, coverage etc.)
+* bower for static dependencies (angular, bootstrap)
+* Split into their own sublasses for cleaner grouping of relevant settings (e.g. RedisCache, EmailSettings etc.)
+* Django-compressor or similar tool
+* Celery with redis as a broker and result store
+* Use fakeS3 or S3Proxy docker container to reduce dev/prod parity
+
+.. _fig: http://fig.sh
+.. _docker: https://docker.com
 
 Usage
 ------
@@ -49,7 +68,7 @@ First, get cookiecutter. Trust me, it's awesome::
 
 Now run it against this repo::
 
-    $ cookiecutter https://github.com/pydanny/cookiecutter-django.git
+    $ cookiecutter -c myflow https://github.com/slafs/cookiecutter-django.git
 
 You'll be prompted for some questions, answer them, then it will create a Django project for you.
 
@@ -83,7 +102,7 @@ Create a GitHub repo and push it there::
     $ git init
     $ git add .
     $ git commit -m "first awesome commit"
-    $ git remote add origin git@github.com:pydanny/redditclone.git
+    $ git remote add origin git@github.com:slafs/redditclone.git
     $ git push -u origin master
 
 Now take a look at your repo. Don't forget to carefully look at the generated README. Awesome, right?
