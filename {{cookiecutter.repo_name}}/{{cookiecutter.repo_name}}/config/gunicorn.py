@@ -11,4 +11,3 @@ max_requests = 1000
 
 accesslog = '-'
 errorlog = '-'
-

@@ -4,11 +4,7 @@
 import os
 import sys
 
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 import {{ cookiecutter.repo_name }}
 version = {{ cookiecutter.repo_name }}.__version__
@@ -23,7 +19,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        'Django>=1.6.5',
+        'Django>=1.7',
     ],
     zip_safe=False,
     scripts=['{{ cookiecutter.repo_name }}/manage.py'],
