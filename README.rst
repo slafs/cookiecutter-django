@@ -12,7 +12,7 @@ A cookiecutter_ template for Django.
 Features
 ---------
 
-* For Django 1.6
+* For Django 1.7
 * Twitter Bootstrap_ 3
 * AngularJS_
 * Settings management via django-configurations_
@@ -173,18 +173,6 @@ Releases
 --------
 
 Want a stable release? You can find them at https://github.com/pydanny/cookiecutter-django/releases
-
-**note**: Cookiecutter won't support tagged releases until 0.7.0 comes out, which should be any day! Which means, if you want to use a
-tagged release of cookiecutter-django, then you have to install Cookiecutter directly from GitHub. To do that, follow these steps:
-
-1. Enter your virtualenv.
-2. Run these commands:
-
-.. code-block:: bash
-
-    (cookiecutter) $ git clone https://github.com/audreyr/cookiecutter.git
-    (cookiecutter) cd cookiecutter
-    (cookiecutter) python setup.py develop
 
 
 Not Exactly What You Want?

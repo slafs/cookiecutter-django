@@ -43,9 +43,11 @@ class Common(Configuration):
         'django.contrib.admin',
     )
     THIRD_PARTY_APPS = (
-        'south',  # Database migration helpers:
         'crispy_forms',  # Form layouts
         'avatar',  # for user avatars
+        'allauth',  # registration
+        'allauth.account',  # registration
+        'allauth.socialaccount',  # registration
     )
 
     # Apps specific for this project go here.
@@ -56,18 +58,12 @@ class Common(Configuration):
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
     INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
-
-    INSTALLED_APPS += (
-        # Needs to come last for now because of a weird edge case between
-        #   South and allauth
-        'allauth',  # registration
-        'allauth.account',  # registration
-        'allauth.socialaccount',  # registration
-    )
     # END APP CONFIGURATION
 
     # MIDDLEWARE CONFIGURATION
     MIDDLEWARE_CLASSES = (
+        # Make sure djangosecure.middleware.SecurityMiddleware is listed first
+        'djangosecure.middleware.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,6 +72,13 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
     # END MIDDLEWARE CONFIGURATION
+
+    # MIGRATIONS CONFIGURATION
+    MIGRATION_MODULES = {
+        'sites': 'contrib.sites.migrations'
+    }
+    # END MIGRATIONS CONFIGURATION
+
 
     # DEBUG
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
@@ -106,7 +109,7 @@ class Common(Configuration):
     # MANAGER CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
     ADMINS = (
-        ('{{cookiecutter.author_name}}', '{{cookiecutter.email}}'),
+        ("""{{cookiecutter.author_name}}""", '{{cookiecutter.email}}'),
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -123,15 +126,9 @@ class Common(Configuration):
     # memcacheify (used on heroku) is painful to install on windows.
     CACHES = {
         'default': {
-            'BACKEND': 'redis_cache.RedisCache',
-            'LOCATION': REDIS_HOST + ':' + REDIS_PORT,
-            'KEY_PREFIX': '{{ cookiecutter.repo_name }}',
-            'OPTIONS': {
-                'DB': 1,
-                'PASSWORD': '',
-                'PARSER_CLASS': 'redis.connection.HiredisParser'
-            },
-        },
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': ''
+        }
     }
     # END CACHING
 
@@ -273,4 +270,5 @@ class Common(Configuration):
         }
     }
     # END LOGGING CONFIGURATION
-    # Your common stuff: Below this line define 3rd party libary settings
+
+    # Your common stuff: Below this line define 3rd party library settings
