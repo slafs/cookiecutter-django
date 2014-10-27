@@ -45,13 +45,13 @@ What is changed in this fork
 
 * fig_ for local development using docker_
 * redis for caching
+* bower for static dependencies (angular, bootstrap)
 
 What I want to change in this fork
 -----------------------------------
 
 * upgrade to Django 1.7 and eliminate South
 * Add some initial files/dirs for testing (with pytest, flake8, coverage etc.)
-* bower for static dependencies (angular, bootstrap)
 * Split into their own sublasses for cleaner grouping of relevant settings (e.g. RedisCache, EmailSettings etc.)
 * Django-compressor or similar tool
 * Celery with redis as a broker and result store
