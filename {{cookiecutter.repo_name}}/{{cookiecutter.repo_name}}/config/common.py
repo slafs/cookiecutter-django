@@ -79,7 +79,6 @@ class Common(Configuration):
     }
     # END MIGRATIONS CONFIGURATION
 
-
     # DEBUG
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
     DEBUG = values.BooleanValue(False)
