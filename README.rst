@@ -47,6 +47,7 @@ What is changed in this fork
 * redis for caching
 * bower for static dependencies (angular, bootstrap)
 * version bumping with bumpversion
+* serving static files with whitenoise
 
 What I want to change in this fork
 -----------------------------------
@@ -56,7 +57,6 @@ What I want to change in this fork
   values (e.g. RedisCache, EmailSettings etc.)
 * Django-compressor or similar tool
 * Celery with redis as a broker and result store
-* Use fakeS3 or S3Proxy docker container to reduce dev/prod parity
 
 .. _fig: http://fig.sh
 .. _docker: https://docker.com

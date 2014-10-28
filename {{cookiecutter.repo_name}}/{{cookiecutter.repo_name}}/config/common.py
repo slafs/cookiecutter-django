@@ -185,8 +185,11 @@ class Common(Configuration):
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
     STATIC_ROOT = join(os.path.dirname(BASE_DIR), 'staticfiles')
 
+    # static host for something like cloudfron CDN
+    STATIC_HOST = values.Value('')
+
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-    STATIC_URL = '/static/'
+    STATIC_URL = STATIC_HOST + '/static/'
 
     # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
     STATICFILES_DIRS = (
@@ -198,6 +201,8 @@ class Common(Configuration):
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     )
+
+    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
     # END STATIC FILE CONFIGURATION
 
     # MEDIA CONFIGURATION
