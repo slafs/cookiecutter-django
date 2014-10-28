@@ -1,6 +1,6 @@
 {
   "name": "{{ cookiecutter.repo_name }}-bower",
-  "version": "{{ cookiecutter.version }}",
+  "version": "{{ cookiecutter.version }}-dev",
   "dependencies": {
     "jquery": "2.1.x",
     "bootstrap": "3.2.x",

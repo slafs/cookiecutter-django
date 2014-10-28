@@ -46,12 +46,14 @@ What is changed in this fork
 * fig_ for local development using docker_
 * redis for caching
 * bower for static dependencies (angular, bootstrap)
+* version bumping with bumpversion
 
 What I want to change in this fork
 -----------------------------------
 
 * Add some initial files/dirs for testing (with pytest, flake8, coverage etc.)
-* Split into their own sublasses for cleaner grouping of relevant settings (e.g. RedisCache, EmailSettings etc.)
+* Maybe split settings into their own sublasses for cleaner grouping of relevant
+  values (e.g. RedisCache, EmailSettings etc.)
 * Django-compressor or similar tool
 * Celery with redis as a broker and result store
 * Use fakeS3 or S3Proxy docker container to reduce dev/prod parity
