@@ -21,10 +21,10 @@ BASE_DIR = dirname(dirname(__file__))
 class Common(Configuration):
 
     # environ vars for fig
-    POSTGRES_HOST = os.environ.get('DB_1_PORT_5432_TCP_ADDR', 'localhost')
-    POSTGRES_PORT = os.environ.get('DB_1_PORT_5432_TCP_PORT', '5432')
-    REDIS_HOST = os.environ.get('CACHE_1_PORT_6379_TCP_ADDR', 'localhost')
-    REDIS_PORT = os.environ.get('CACHE_1_PORT_6379_TCP_PORT', '6379')
+    POSTGRES_HOST = values.Value('localhost', environ_name='DB_PORT_5432_TCP_ADDR', environ_prefix='')
+    POSTGRES_PORT = values.Value('5432', environ_name='DB_PORT_5432_TCP_PORT', environ_prefix='')
+    REDIS_HOST = values.Value('localhost', environ_name='CACHE_PORT_6379_TCP_ADDR', environ_prefix='')
+    REDIS_PORT = values.Value('6379', environ_name='CACHE_PORT_6379_TCP_PORT', environ_prefix='')
 
     # APP CONFIGURATION
     DJANGO_APPS = (
