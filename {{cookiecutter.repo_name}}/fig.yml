@@ -8,7 +8,6 @@ db:
   # ports:
   #  - "5432:5432"
 
-
 static:
   build: {{cookiecutter.repo_name}}/static
   command: grunt serve
