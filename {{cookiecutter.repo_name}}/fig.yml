@@ -1,21 +1,29 @@
 cache:
   image: redis:2.8
-  ports:
-   - "6379:6379"
+  # ports:
+  #  - "6379:6379"
 
 db:
   image: postgres:9.3
-  ports:
-   - "5432:5432"
+  # ports:
+  #  - "5432:5432"
+
+
+static:
+  build: {{cookiecutter.repo_name}}/static
+  command: grunt serve
+  volumes:
+    - {{cookiecutter.repo_name}}/static:/app
 
 web:
   build: .
-  command: gunicorn -c "/code/{{ cookiecutter.repo_name }}/config/gunicorn.py" --pythonpath="/code/{{ cookiecutter.repo_name }}" --reload wsgi:application
+  command: gunicorn -c "/code/testproject/config/gunicorn.py" --reload testproject.wsgi:application
   environment:
     DJANGO_CONFIGURATION: Local
   links:
    - db
    - cache
+   - static
   ports:
    - "8000:8000"
   volumes:

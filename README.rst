@@ -52,6 +52,8 @@ What is changed in this fork
 What I want to change in this fork
 -----------------------------------
 
+* add another container for performing grunt tasks
+* cleanup pythonpath here and there
 * Add some initial files/dirs for testing (with pytest, flake8, coverage etc.)
 * Maybe split settings into their own sublasses for cleaner grouping of relevant
   values (e.g. RedisCache, EmailSettings etc.)
