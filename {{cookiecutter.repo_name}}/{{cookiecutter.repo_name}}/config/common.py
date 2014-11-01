@@ -21,10 +21,10 @@ BASE_DIR = dirname(dirname(__file__))
 class Common(Configuration):
 
     # environ vars for fig
-    POSTGRES_HOST = os.environ.get('DB_1_PORT_5432_TCP_ADDR', 'localhost')
-    POSTGRES_PORT = os.environ.get('DB_1_PORT_5432_TCP_PORT', '5432')
-    REDIS_HOST = os.environ.get('CACHE_1_PORT_6379_TCP_ADDR', 'localhost')
-    REDIS_PORT = os.environ.get('CACHE_1_PORT_6379_TCP_PORT', '6379')
+    DB_HOST = values.Value('localhost', environ_name='DB_PORT_5432_TCP_ADDR', environ_prefix='')
+    DB_PORT = values.IntegerValue('5432', environ_name='DB_PORT_5432_TCP_PORT', environ_prefix='')
+    CACHE_HOST = values.Value('localhost', environ_name='CACHE_PORT_6379_TCP_ADDR', environ_prefix='')
+    CACHE_PORT = values.IntegerValue('6379', environ_name='CACHE_PORT_6379_TCP_PORT', environ_prefix='')
 
     # APP CONFIGURATION
     DJANGO_APPS = (
@@ -117,18 +117,11 @@ class Common(Configuration):
 
     # DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://postgres:@{0}:{1}/postgres'.format(POSTGRES_HOST, POSTGRES_PORT))
+    DATABASES = values.DatabaseURLValue('postgres://postgres:@db/postgres')
     # END DATABASE CONFIGURATION
 
     # CACHING
-    # Do this here because thanks to django-pylibmc-sasl and pylibmc
-    # memcacheify (used on heroku) is painful to install on windows.
-    CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-            'LOCATION': ''
-        }
-    }
+    CACHES = values.CacheURLValue('locmem://')
     # END CACHING
 
     # GENERAL CONFIGURATION
@@ -189,7 +182,8 @@ class Common(Configuration):
     STATIC_HOST = values.Value('')
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-    STATIC_URL = STATIC_HOST + '/static/'
+    # STATIC_URL = STATIC_HOST + '/static/'
+    STATIC_URL = '/static/'
 
     # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
     STATICFILES_DIRS = (
@@ -214,10 +208,10 @@ class Common(Configuration):
     # END MEDIA CONFIGURATION
 
     # URL Configuration
-    ROOT_URLCONF = 'urls'
+    ROOT_URLCONF = '{{ cookiecutter.repo_name }}.urls'
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
-    WSGI_APPLICATION = 'wsgi.application'
+    WSGI_APPLICATION = '{{ cookiecutter.repo_name }}.wsgi.application'
     # End URL Configuration
 
     # AUTHENTICATION CONFIGURATION
