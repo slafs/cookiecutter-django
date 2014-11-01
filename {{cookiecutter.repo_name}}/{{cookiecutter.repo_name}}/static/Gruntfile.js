@@ -15,13 +15,11 @@ module.exports = function (grunt) {
 
     return {
       app: this.app,
-      templates: this.app + '/templates',
-      css: this.app + '/static/css',
-      sass: this.app + '/static/sass',
-      fonts: this.app + '/static/fonts',
-      images: this.app + '/static/images',
-      js: this.app + '/static/js',
-      manageScript: this.app + '/manage.py'
+      css: 'css',
+      sass: 'sass',
+      fonts: 'fonts',
+      images: 'images',
+      js: 'js',
     }
   };
 
@@ -73,21 +71,10 @@ module.exports = function (grunt) {
           // debugInfo: true
         }
       }
-    },
-
-    // see: https://npmjs.org/package/grunt-bg-shell
-    bgShell: {
-      _defaults: {
-        bg: true
-      },
-      runDjango: {
-        cmd: 'python <%= paths.manageScript %> runserver'
-      }
     }
   });
 
   grunt.registerTask('serve', [
-    'bgShell:runDjango',
     'watch'
   ]);
 
