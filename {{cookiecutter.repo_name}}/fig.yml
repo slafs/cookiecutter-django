@@ -16,7 +16,7 @@ static:
 
 web:
   build: .
-  command: gunicorn -c "/code/testproject/config/gunicorn.py" --reload testproject.wsgi:application
+  command: gunicorn -c "/code/{{cookiecutter.repo_name}}/config/gunicorn.py" --reload {{cookiecutter.repo_name}}.wsgi:application
   environment:
     DJANGO_CONFIGURATION: Local
   links:
